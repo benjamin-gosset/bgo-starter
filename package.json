@@ -1,0 +1,22 @@
+{
+  "name": "bggulp",
+  "version": "1.0.0",
+  "description": "Gulp tasks for WP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.13",
+    "gulp": "^4.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "node-sass": "^5.0.0"
+  },
+  "dependencies": {
+    "npm": "^6.10.3"
+  }
+}
