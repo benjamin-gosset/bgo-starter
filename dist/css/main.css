@@ -1,8 +1,1 @@
-/* Fonts */
-@font-face {
-  font-family: "Calistoga";
-  src: url("../fonts/calistoga/calistoga.ttf") format("truetype"); }
 
-h1,
-.h1 {
-  font-family: "Calistoga", "sans-serif"; }
