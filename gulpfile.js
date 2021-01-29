@@ -7,13 +7,10 @@ const sourcemaps = require('gulp-sourcemaps');
 const server = browserSync.create();
 const url = 'http://site.local';
 
-sass.compiler = require('node-sass');
-
 function compileCSS() {
   return src('./sass/main.sass')
     .pipe(plumber())
     .pipe(sourcemaps.init())
-    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(sourcemaps.write('.'))
     .pipe(dest('./css'))
     .pipe(server.stream())
@@ -27,7 +24,7 @@ function reloadTask(done) {
 function startTask(done) {
   server.init({
     proxy: url,
-    open: false,
+    open: true,
     ghostMode: false
   });
   done();
