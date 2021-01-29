@@ -5,15 +5,13 @@ const browserSync = require('browser-sync');
 const sourcemaps = require('gulp-sourcemaps');
 
 const server = browserSync.create();
-const url = 'http://site.local';
+const url = 'http://example.local/'; // Change your local URL 
 
 function compileCSS() {
-  return src('./sass/main.sass')
-    .pipe(plumber())
-    .pipe(sourcemaps.init())
-    .pipe(sourcemaps.write('.'))
-    .pipe(dest('./css'))
-    .pipe(server.stream())
+  return src('./src/sass/*.scss', { sourcemaps: true })
+    .pipe(sass())
+    .pipe(dest('./dist/css'), { sourcemaps: true })
+    .pipe(server.stream());
 }
 
 function reloadTask(done) {
@@ -31,14 +29,14 @@ function startTask(done) {
 }
 
 function fonts() {
-    return src('src/fonts/**/*')
+    return src('./src/fonts/**/*')
     .pipe(dest('dist/fonts'))
 }
 
 function watchTask() {
-  watch('sass/**/*.sass', compileCSS);
+  watch('./src/sass/**/*.scss', compileCSS);
   watch('**/*.php', reloadTask);
-  watch('js/**/*.js', reloadTask);
+  watch('./src/js/**/*.js', reloadTask);
 }
 
 exports.default = series(startTask, watchTask);
