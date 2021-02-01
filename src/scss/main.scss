@@ -1,17 +1,21 @@
-// base
+// Reset
 @import "base/_reset";
 
-// abstracts
+// Abstracts
 @import "abstracts/_mixins";
 @import "abstracts/_utilities";
+@import "abstracts/_colors";
 @import "abstracts/_fonts";
 @import "abstracts/_functions";
 @import "abstracts/_placeholders";
 @import "abstracts/_variables";
 
-// vendors
+// Base
+@import "base/_text";
 
-// layout
+// Vendors
+
+// Layout
 @import "layout/_footer";
 @import "layout/_forms";
 @import "layout/_grid";
@@ -19,15 +23,15 @@
 @import "layout/_navigation";
 @import "layout/_sidebar";
 
-// components
+// Components
 @import "components/_carousel";
 @import "components/_media";
 @import "components/_thumbnails";
 
-// pages
+// Pages
 @import "pages/_contact";
 @import "pages/_home";
 
-//themes
+// Themes
 @import "themes/_admin";
 @import "themes/_theme";
