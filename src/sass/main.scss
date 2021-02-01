@@ -1,32 +1,33 @@
 // base
-@import "base/_reset.scss";
-@import "base/_typography.scss";
+@import "base/_reset";
 
 // abstracts
-@import "abstracts/_functions.scss";
-@import "abstracts/_mixins.scss";
-@import "abstracts/_placeholders.scss";
-@import "abstracts/_variables.scss";
+@import "abstracts/_mixins";
+@import "abstracts/_utilities";
+@import "abstracts/_fonts";
+@import "abstracts/_functions";
+@import "abstracts/_placeholders";
+@import "abstracts/_variables";
 
 // vendors
 
 // layout
-@import "layout/_footer.scss";
-@import "layout/_forms.scss";
-@import "layout/_grid.scss";
-@import "layout/_header.scss";
-@import "layout/_navigation.scss";
-@import "layout/_sidebar.scss";
+@import "layout/_footer";
+@import "layout/_forms";
+@import "layout/_grid";
+@import "layout/_header";
+@import "layout/_navigation";
+@import "layout/_sidebar";
 
 // components
-@import "components/_carousel.scss";
-@import "components/_media.scss";
-@import "components/_thumbnails.scss";
+@import "components/_carousel";
+@import "components/_media";
+@import "components/_thumbnails";
 
 // pages
-@import "pages/_contact.scss";
-@import "pages/_home.scss";
+@import "pages/_contact";
+@import "pages/_home";
 
 //themes
-@import "themes/_admin.scss";
-@import "themes/_theme.scss";
+@import "themes/_admin";
+@import "themes/_theme";
