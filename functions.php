@@ -43,7 +43,7 @@ add_action( 'wp_enqueue_scripts', 'bgo_register_assets' );
 
 function bgo_register_assets() {
 
-    wp_enqueue_style( 'bgo', get_template_directory_uri() . '/dist/css/main.css', array(), '1.0');
+    wp_enqueue_style( 'bgo', get_template_directory_uri() . '/dist/css/main.min.css', array(), '1.0');
 
     wp_enqueue_script( 'bgo', get_template_directory_uri() . 'dist/js/script.js', array(), '1.0', true);
 }

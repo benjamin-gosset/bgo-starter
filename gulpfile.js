@@ -1,11 +1,16 @@
-const { src, dest, series, watch } = require('gulp');
-const sass = require('gulp-sass');
-const plumber = require('gulp-plumber');
-const browserSync = require('browser-sync');
-const sourcemaps = require('gulp-sourcemaps');
+const { src, dest, series, watch } = require('gulp'),
+  sass = require('gulp-sass'),
+  postcss = require("gulp-postcss"),
+  autoprefixer = require("autoprefixer"),
+  cssnano = require("cssnano"),
+  plumber = require('gulp-plumber'),
+  browserSync = require('browser-sync'),
+  sourcemaps = require('gulp-sourcemaps'),
+  svgSymbols = require("gulp-svg-symbols"),
+  rename = require("gulp-rename");
 
 const server = browserSync.create();
-const url = 'http://example.local/'; // Change your local URL 
+const url = 'http://benjamin2021.local/';
 const paths = {
   styles: {
     src: ["./src/scss/*.scss", "./src/scss/**/*.scss"],
@@ -16,21 +21,45 @@ const paths = {
     dest: "./dist/js/"
   },
   svg: {
-    src: "./src/img/*.svg"
+    src: "./src/img/*.svg",
+    dest: "./dist/img/"
   },
   php: {
     src: "**/*.php"
   }
 };
 
-
+/* STYLES */
 function stylesTask() {
-  return src(paths.styles.src, { sourcemaps: true })
-    .pipe(sass())
-    .pipe(dest(paths.styles.dest), { sourcemaps: true })
+  return src(paths.styles.src[0])
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(postcss([ autoprefixer("last 2 version"), cssnano() ]))
+    .pipe(sourcemaps.write('.'))
+    .pipe(rename("main.min.css"))
+    .pipe(dest(paths.styles.dest))
     .pipe(server.stream());
 }
 
+/* SVG */
+function svgTask() {
+  return src(paths.svg.src)
+  .pipe(
+    svgSymbols({
+      templates: ["default-svg"],
+      svgAttrs: {
+        width: 0,
+        height: 0,
+        display: "none"
+      }
+    })
+  )
+  .pipe(rename("sprite.svg.php"))
+  .pipe(dest(paths.svg.dest));
+}
+
+/* TASKS */ 
 function reloadTask(done) {
   server.reload();
   done();
@@ -49,6 +78,7 @@ function watchTask() {
   watch(paths.styles.src, stylesTask);
   watch(paths.php.src, reloadTask);
   watch(paths.scripts.src, reloadTask);
+  watch(paths.svg.src, svgTask);
 }
 
 exports.default = series(startTask, watchTask);
