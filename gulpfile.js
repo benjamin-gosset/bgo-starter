@@ -6,11 +6,28 @@ const sourcemaps = require('gulp-sourcemaps');
 
 const server = browserSync.create();
 const url = 'http://example.local/'; // Change your local URL 
+const paths = {
+  styles: {
+    src: ["./src/scss/*.scss", "./src/scss/**/*.scss"],
+    dest: "./dist/css/"
+  },
+  scripts: {
+    src: ["./src/js/*.js", "./src/js/libs/*.js", "!./src/js/min/*.js"],
+    dest: "./dist/js/"
+  },
+  svg: {
+    src: "./src/img/*.svg"
+  },
+  php: {
+    src: "**/*.php"
+  }
+};
 
-function compileCSS() {
-  return src('./src/sass/*.scss', { sourcemaps: true })
+
+function stylesTask() {
+  return src(paths.styles.src, { sourcemaps: true })
     .pipe(sass())
-    .pipe(dest('./dist/css'), { sourcemaps: true })
+    .pipe(dest(paths.styles.dest), { sourcemaps: true })
     .pipe(server.stream());
 }
 
@@ -28,15 +45,10 @@ function startTask(done) {
   done();
 }
 
-function fonts() {
-    return src('./src/fonts/**/*')
-    .pipe(dest('dist/fonts'))
-}
-
 function watchTask() {
-  watch('./src/sass/**/*.scss', compileCSS);
-  watch('**/*.php', reloadTask);
-  watch('./src/js/**/*.js', reloadTask);
+  watch(paths.styles.src, stylesTask);
+  watch(paths.php.src, reloadTask);
+  watch(paths.scripts.src, reloadTask);
 }
 
 exports.default = series(startTask, watchTask);
