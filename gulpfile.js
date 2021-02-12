@@ -7,10 +7,11 @@ const { src, dest, series, watch } = require('gulp'),
   browserSync = require('browser-sync'),
   sourcemaps = require('gulp-sourcemaps'),
   svgSymbols = require("gulp-svg-symbols"),
-  rename = require("gulp-rename");
+  rename = require("gulp-rename"),
+  concat = require("gulp-concat");
 
 const server = browserSync.create();
-const url = 'http://benjamin2021.local/';
+const url = 'YOUR LOCAL URL';
 const paths = {
   styles: {
     src: ["./src/scss/*.scss", "./src/scss/**/*.scss"],
@@ -40,6 +41,14 @@ function stylesTask() {
     .pipe(rename("main.min.css"))
     .pipe(dest(paths.styles.dest))
     .pipe(server.stream());
+}
+
+/* SCRIPTS */
+function scriptsTask() {
+  return src(paths.scripts.src)
+  .pipe(concat("app.js"))
+  .pipe(dest(paths.scripts.dest))
+  .pipe(server.stream());
 }
 
 /* SVG */
@@ -77,7 +86,7 @@ function startTask(done) {
 function watchTask() {
   watch(paths.styles.src, stylesTask);
   watch(paths.php.src, reloadTask);
-  watch(paths.scripts.src, reloadTask);
+  watch(paths.scripts.src, scriptsTask);
   watch(paths.svg.src, svgTask);
 }
 
