@@ -58,3 +58,12 @@ register_nav_menus( array(
 	'footer-menu' => esc_html__( 'Footer menu', 'bgostarter' ),
 	'footer-social-menu' => esc_html__( 'Footer social icons', 'bgostarter' ),
 ) );
+
+/**
+ * Remove post tags
+ */
+add_action( 'init', 'bgo_remove_default_taxos', 2 );
+function bgo_remove_default_taxos() {
+    global $wp_taxonomies;
+    unset($wp_taxonomies['post_tag']);
+}
