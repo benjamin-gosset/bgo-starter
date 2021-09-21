@@ -67,3 +67,11 @@ function bgo_remove_default_taxos() {
     global $wp_taxonomies;
     unset($wp_taxonomies['post_tag']);
 }
+
+/**
+ * Add categories to pages
+ */
+function bgo_categories_support() {
+	register_taxonomy_for_object_type( 'category', 'page' );
+}
+add_action( 'init', 'bgo_categories_support' );
