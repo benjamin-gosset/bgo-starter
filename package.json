@@ -14,7 +14,8 @@
     "gulp-stylelint": "^13.0.0",
     "gulp-svg-symbols": "^3.2.3",
     "postcss": "^8.2.4",
-    "stylelint": "^14.6.1"
+    "stylelint": "^14.6.1",
+    "stylelint-config-recess-order": "^3.0.0"
   },
   "dependencies": {
     "npm": "^7.5.3",
