@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@wordpress/stylelint-config": "^20.0.2",
     "autoprefixer": "^10.2.4",
     "browser-sync": "^2.26.13",
     "gulp": "^4.0.0",
@@ -10,8 +11,10 @@
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^3.0.0",
+    "gulp-stylelint": "^13.0.0",
     "gulp-svg-symbols": "^3.2.3",
-    "postcss": "^8.2.4"
+    "postcss": "^8.2.4",
+    "stylelint": "^14.6.1"
   },
   "dependencies": {
     "npm": "^7.5.3",

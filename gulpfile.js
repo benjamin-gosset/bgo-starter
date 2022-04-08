@@ -8,7 +8,8 @@ const { src, dest, series, watch } = require('gulp'),
   sourcemaps = require('gulp-sourcemaps'),
   svgSymbols = require("gulp-svg-symbols"),
   rename = require("gulp-rename"),
-  concat = require("gulp-concat");
+  concat = require("gulp-concat"),
+  gulpStylelint = require("gulp-stylelint");
 
 const server = browserSync.create();
 const url = 'YOUR LOCAL URL';
@@ -34,6 +35,7 @@ const paths = {
 function stylesTask() {
   return src(paths.styles.src[0])
     .pipe(plumber())
+    .pipe(gulpStylelint({ reporters: [{formatter: 'string', console:true}]}))
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss([ autoprefixer("last 2 version"), cssnano() ]))
