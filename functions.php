@@ -8,7 +8,7 @@ add_theme_support( 'post-thumbnails' );
 /**
  * Add site title in theme header
  */ 
-add_theme_support( 'title-tag' );
+add_theme_support( 'title-tag');
 
 /**
 * Switch default core markup for search form, comment form, and comments
