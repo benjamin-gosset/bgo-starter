@@ -5,6 +5,24 @@
         "layout": {
             "contentSize": "840px",
             "wideSize": "1100px"
+        },
+        "typography": {
+            "fontFamilies": [
+                {
+                    "fontFamily": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif",
+                    "slug": "system-fonts",
+                    "name": "System Fonts"
+                },
+                {
+                    "fontFamily": "Geneva, Tahoma, Verdana, sans-serif",
+                    "slug": "geneva-verdana"
+                },
+                {
+                    "fontFamily": "Cambria, Georgia, serif",
+                    "slug": "cambria-georgia"
+                }
+               ]
         }
+        
     }
 }
