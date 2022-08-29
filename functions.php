@@ -52,11 +52,11 @@ function bgo_register_assets() {
  * Register menus
  */ 
 register_nav_menus( array(
-	'primary-menu' => esc_html__( 'Primary menu', 'bgostarter' ),
-	'topbar-menu' => esc_html__( 'Top bar menu', 'bgostarter' ),
-	'social-menu' => esc_html__( 'Main menu social icons', 'bgostarter' ),
-	'footer-menu' => esc_html__( 'Footer menu', 'bgostarter' ),
-	'footer-social-menu' => esc_html__( 'Footer social icons', 'bgostarter' ),
+	'primary-menu'        => esc_html__( 'Primary menu', 'bgostarter' ),
+	'topbar-menu'         => esc_html__( 'Top bar menu', 'bgostarter' ),
+	'social-menu'         => esc_html__( 'Main menu social icons', 'bgostarter' ),
+	'footer-menu'         => esc_html__( 'Footer menu', 'bgostarter' ),
+	'footer-social-menu'  => esc_html__( 'Footer social icons', 'bgostarter' ),
 ) );
 
 /**
